@@ -5,6 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Date;
 
 class Car extends Model
 {
@@ -57,4 +58,7 @@ class Car extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+    public function setDatetimeAttribute($value) {
+        $this->attributes['datetime'] = Date::parse($value);
+    }
 }

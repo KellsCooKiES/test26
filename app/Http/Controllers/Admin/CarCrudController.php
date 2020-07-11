@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CarRequest;
+use App\Models\Brand;
+use App\Models\CarModel;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -39,40 +41,40 @@ class CarCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::addColumns([
-            [
-                'label'=>'Марка',
-                 'name'  => 'brand', // name of relationship method in the model
-                 'type'  => 'relationship',
-            ],
-            [
-                'label'=>'Модель',
-                'name' => 'model',
-                'type' => 'relationship'
-            ],
-            [
-                'label'=>'Год выпуска',
-                'name' => 'vehicle_release',
-                'type' => 'date',
-                'format' => 'Y'
-            ],
-            [
-                'label'=>'Пробег, км',
-                'name' => 'mileage',
-                'type' => 'number'
-            ],
-            [
-                'label'=>'Цвет',
-                'name' => 'color',
-                'type' => 'string'
-            ],
-            [
-                'label'=>'Цена, рублуй',
-                'name' => 'price',
-                'type' => 'number'
-            ],
-        ]);
-        /**
+            CRUD::addColumns([
+                [
+                    'label'=>'Марка',
+                    'name'  => 'brand', // name of relationship method in the model
+                    'type'  => 'relationship',
+                ],
+                [
+                    'label'=>'Модель',
+                    'name' => 'model',
+                    'type' => 'relationship'
+                ],
+                [
+                    'label'=>'Год выпуска',
+                    'name' => 'vehicle_release',
+                    'type' => 'date',
+                    'format' => 'Y'
+                ],
+                [
+                    'label'=>'Пробег, км',
+                    'name' => 'mileage',
+                    'type' => 'number'
+                ],
+                [
+                    'label'=>'Цвет',
+                    'name' => 'color',
+                    'type' => 'string'
+                ],
+                [
+                    'label'=>'Цена, рублуй',
+                    'name' => 'price',
+                    'type' => 'number'
+                ],
+            ]);
+            /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
@@ -87,7 +89,7 @@ class CarCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(CarRequest::class);
+       $this->crud->setValidation(CarRequest::class);
 
         CRUD::addFields([
             [
@@ -112,7 +114,15 @@ class CarCrudController extends CrudController
             [
                 'label'=>'Год выпуска',
                 'name' => 'vehicle_release',
-                'type'  => 'number',
+
+                'type'  => 'datetime_picker',
+
+                // optional:
+                'datetime_picker_options' => [
+                    'format' => 'YYYY',
+                    'language' => 'ru'
+                ],
+                'allows_null' => false,
             ],
             [
                 'label'=>'Пробег, км',
@@ -137,6 +147,7 @@ class CarCrudController extends CrudController
          * - CRUD::field('price')->type('number');
          * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
+
     }
 
     /**
