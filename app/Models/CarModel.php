@@ -3,12 +3,11 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
-class Brand extends Model
+class CarModel extends Model
 {
-    use  CrudTrait;
+    use CrudTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -16,7 +15,7 @@ class Brand extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'brands';
+    protected $table = 'models';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -31,11 +30,11 @@ class Brand extends Model
     */
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function carModels()
+    public function brand()
     {
-        return $this->hasMany(CarModel::class);
+        return $this->belongsTo(Brand::class);
     }
 
     /*
