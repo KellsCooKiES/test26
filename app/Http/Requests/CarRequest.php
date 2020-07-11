@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ModelRequest extends FormRequest
+class CarRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,6 @@ class ModelRequest extends FormRequest
     {
         return [
             // 'name' => 'required|min:5|max:255'
-            'vehicle_release' => 'min:4|max:4'
         ];
     }
 
@@ -39,7 +38,7 @@ class ModelRequest extends FormRequest
     public function attributes()
     {
         return [
-            'vehicle_release'
+            //
         ];
     }
 

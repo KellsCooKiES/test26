@@ -6,9 +6,9 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CarModel extends Model
+class Car extends Model
 {
-    use CrudTrait,SoftDeletes;
+    use CrudTrait, SoftDeletes;
 
     /*
     |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ class CarModel extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'models';
+    protected $table = 'cars';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -30,12 +30,14 @@ class CarModel extends Model
     |--------------------------------------------------------------------------
     */
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function brand()
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function model()
+    {
+        return $this->belongsTo(CarModel::class);
     }
 
     /*

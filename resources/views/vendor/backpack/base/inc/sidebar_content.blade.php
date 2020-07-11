@@ -3,3 +3,5 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('brand') }}'><i class='nav-icon la la-list'></i> Марки</a></li>
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('model') }}'><i class='nav-icon la la-modx'></i> Модели</a></li>
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('car') }}'><i class='nav-icon la la-car'></i> Автомобили</a></li>

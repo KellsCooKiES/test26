@@ -33,7 +33,7 @@ class Brand extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function carModels()
+    public function models()
     {
         return $this->hasMany(CarModel::class);
     }

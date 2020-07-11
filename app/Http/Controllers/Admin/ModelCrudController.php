@@ -46,7 +46,7 @@ class ModelCrudController extends CrudController
                 'type' => 'string'
             ]
         );
-        
+
     }
 
     /**
