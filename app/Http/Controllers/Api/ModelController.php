@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 
+use App\Filters\ModelFilters;
 use App\Models\CarModel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -20,17 +21,20 @@ class ModelController extends BaseController
      */
     public function index(Request $request)
     {
-        //if there is a request with event id, return event participants
+        $models = CarModel::latest();
 
 
-            //else return all participants
+        if ($request->has('brand')) {
+            $models->where('brand_id', $request->brand);
+        }
 
-            $models = CarModel::all();
+        $models = $models->get();
 
         if (is_null($models)) {
             return $this->sendError('CarModels not found.');
         }
         return $this->sendResponse($models->toArray(), 'CarModels retrieved successfully.');
     }
+
 
 }

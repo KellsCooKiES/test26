@@ -3,19 +3,28 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use eloquentFilter\QueryFilter\ModelFilters\Filterable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Date;
 
 class Car extends Model
 {
-    use CrudTrait, SoftDeletes;
+    use CrudTrait, SoftDeletes, Filterable;
 
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
     */
+//    private static $whiteListFilter = [
+//        'id',
+//        'vehicle_release',
+//        'mileage',
+//        'color',
+//        'price',
+//    ];
+    private static $whiteListFilter = ['*'];
 
     protected $table = 'cars';
     // protected $primaryKey = 'id';
