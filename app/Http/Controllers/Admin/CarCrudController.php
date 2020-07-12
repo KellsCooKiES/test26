@@ -99,7 +99,7 @@ class CarCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-       $this->crud->setValidation(CarRequest::class);
+        $this->crud->setValidation(CarRequest::class);
 
         CRUD::addFields([
             [
@@ -124,15 +124,7 @@ class CarCrudController extends CrudController
             [
                 'label'=>'Год выпуска',
                 'name' => 'vehicle_release',
-
-                'type'  => 'datetime_picker',
-
-                // optional:
-                'datetime_picker_options' => [
-                    'format' => 'YYYY',
-                    'language' => 'ru'
-                ],
-                'allows_null' => false,
+                'type'  => 'number',
             ],
             [
                 'label'=>'Пробег, км',

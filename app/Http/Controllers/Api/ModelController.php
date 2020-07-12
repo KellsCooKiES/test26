@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Filters\ModelFilters;
+use App\Models\Brand;
 use App\Models\CarModel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -25,7 +26,9 @@ class ModelController extends BaseController
 
 
         if ($request->has('brand')) {
-            $models->where('brand_id', $request->brand);
+            $id = Brand::where('name', $request->brand)->firstOrFail()->id;
+
+            $models->where('brand_id', $id);
         }
 
         $models = $models->get();

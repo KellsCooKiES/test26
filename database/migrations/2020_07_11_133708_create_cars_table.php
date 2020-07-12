@@ -17,7 +17,7 @@ class CreateCarsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('model_id');
-            $table->dateTime('vehicle_release');
+            $table->integer('vehicle_release');
             $table->unsignedInteger('mileage');
             $table->string('color');
             $table->unsignedBigInteger('price');

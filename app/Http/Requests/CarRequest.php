@@ -29,7 +29,7 @@ class CarRequest extends FormRequest
             'brand_id' => 'required',
             'model_id' => 'required',
             'mileage' => 'required | numeric',
-            'vehicle_release'=>'required | Date',
+            'vehicle_release'=>'required | digits:4',
             'color'=>' required',
             'price'=>' required | numeric'
 
