@@ -74,7 +74,17 @@ class CarCrudController extends CrudController
                     'type' => 'number'
                 ],
             ]);
-            /**
+        $this->crud->addFilter([
+            'name'  => 'brand_id',
+            'type'  => 'select2',
+            'label' => 'Бренд'
+        ], function () {
+            return Brand::all()->pluck('name','id')->toArray();
+        }, function ($value) { // if the filter is active
+            $this->crud->addClause('where', 'brand_id', $value);
+        });
+
+        /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
