@@ -55,8 +55,8 @@ class CarCrudController extends CrudController
                 [
                     'label'=>'Год выпуска',
                     'name' => 'vehicle_release',
-                    'type' => 'date',
-                    'format' => 'Y'
+                    'type' => 'string',
+
                 ],
                 [
                     'label'=>'Пробег, км',
